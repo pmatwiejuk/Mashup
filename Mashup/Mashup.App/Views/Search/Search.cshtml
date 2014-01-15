@@ -1,0 +1,10 @@
+﻿@model List<Mashup.Logic.Providers.Search.SearchResultItem>
+
+@foreach (var searchResult in Model)
+{
+    <div>
+        <strong><a href="@searchResult.Url">@searchResult.Title</a></strong>
+        <p>@searchResult.Description</p>
+        <a href="@searchResult.Url">@searchResult.DisplayUrl</a>
+    </div>
+}

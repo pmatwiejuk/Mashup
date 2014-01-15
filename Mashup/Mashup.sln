@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mashup.Data", "Mashup.Data\Mashup.Data.csproj", "{036AA2FE-FE8D-4DFD-83EA-60A9F35B8542}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mashup.Logic", "Mashup.Logic\Mashup.Logic.csproj", "{0364410E-A86C-469E-95E8-2813E8D58473}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mashup.App", "Mashup.App\Mashup.App.csproj", "{C7A3BB30-1E17-462E-9F74-833FA7C81F36}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0364410E-A86C-469E-95E8-2813E8D58473} = {0364410E-A86C-469E-95E8-2813E8D58473}
+		{036AA2FE-FE8D-4DFD-83EA-60A9F35B8542} = {036AA2FE-FE8D-4DFD-83EA-60A9F35B8542}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A65A369B-933B-4E50-841F-D2A7B2133E75}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://duszekmestre.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Mashup.Data\\Mashup.Data.csproj
+		SccProjectName1 = Mashup.Data
+		SccLocalPath1 = Mashup.Data
+		SccProjectUniqueName2 = Mashup.Logic\\Mashup.Logic.csproj
+		SccProjectName2 = Mashup.Logic
+		SccLocalPath2 = Mashup.Logic
+		SccProjectUniqueName3 = Mashup.App\\Mashup.App.csproj
+		SccProjectName3 = Mashup.App
+		SccLocalPath3 = Mashup.App
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{036AA2FE-FE8D-4DFD-83EA-60A9F35B8542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036AA2FE-FE8D-4DFD-83EA-60A9F35B8542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036AA2FE-FE8D-4DFD-83EA-60A9F35B8542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036AA2FE-FE8D-4DFD-83EA-60A9F35B8542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0364410E-A86C-469E-95E8-2813E8D58473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0364410E-A86C-469E-95E8-2813E8D58473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0364410E-A86C-469E-95E8-2813E8D58473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0364410E-A86C-469E-95E8-2813E8D58473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A3BB30-1E17-462E-9F74-833FA7C81F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A3BB30-1E17-462E-9F74-833FA7C81F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A3BB30-1E17-462E-9F74-833FA7C81F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A3BB30-1E17-462E-9F74-833FA7C81F36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

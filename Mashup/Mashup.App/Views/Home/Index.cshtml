@@ -1,0 +1,21 @@
+﻿@using System.Collections.Specialized
+@{
+    ViewBag.Title = "Strona główna";
+}
+
+<div id="container">
+    <div id="rssBlock">
+        @{ Html.RenderAction("Index", "RSS"); }
+    </div>
+
+    <div id="weatherBlock">
+        @{ Html.RenderAction("Index", "Weather"); }
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+@section Scripts
+{
+
+}

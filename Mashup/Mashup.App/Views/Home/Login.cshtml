@@ -1,0 +1,35 @@
+﻿@model Mashup.App.Models.LoginModel
+
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<div id="loginPanel">
+    <h1>Logowanie</h1>
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        @Html.ValidationMessage("InvalidLoginOrPassword")<br />
+        <div>
+            @Html.LabelFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)<br />
+            @Html.TextBoxFor(x => x.Email, null, new { type = "email" })
+        </div>
+
+        <div>
+            @Html.LabelFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)<br />
+            @Html.PasswordFor(x => x.Password)
+        </div>
+
+        <label>
+            @Html.CheckBoxFor(x => x.RememberMe)
+            Zapamiętaj mnie
+        </label>
+
+        <div>
+            <input type="submit" value="Zaloguj" />
+        </div>
+
+    }
+</div>

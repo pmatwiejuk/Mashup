@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery-2.0.3.min.js"></script>
+    <script src="../../Scripts/search.js"></script>
+</head>
+<body>
+
+    @Html.Partial("UserPanel")
+
+    @{ Html.RenderAction("Index", "Search"); }
+
+    @RenderBody()
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

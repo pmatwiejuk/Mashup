@@ -1,0 +1,107 @@
+﻿@model Mashup.Data.Model.dbo.Users
+
+<h2>Edycja profilu użytkownika</h2>
+
+<div>
+    <h3>Dane użytkownika</h3>   
+    @Html.ValidationMessage("UserSaveInfo")
+    @using (Html.BeginForm("SaveUser", "Home", FormMethod.Post))
+    {
+        <ul>
+            <li>
+                Imię: @Html.TextBoxFor(x => x.Name)
+            </li>
+            <li>
+                Nazwisko: @Html.TextBoxFor(x => x.Surname)
+            </li>
+            <li>
+                Email: @Model.Email
+            </li>
+            <li>
+                Hasło: @Html.PasswordFor(x => x.Password)
+            </li>
+        </ul>
+        <input type="submit" value="Zapisz zmiany"/>
+    }
+</div>
+
+<div>
+    <h3>Ustawienia RSSów</h3>
+    @Html.ValidationMessage("FeedError")
+    <table>
+        <tr>
+            <th>Adres kanału</th>
+            <th></th>
+        </tr>
+        @foreach (var rss in Model.RSS)
+        {
+            <tr>
+                <td>@rss.RSS_URL</td>
+                <td><input type="button" value="Usuń" onclick="RemoveFeed('@rss.ID')"/></td>
+            </tr>
+        }
+        <tr>
+            <td><input type="text" id="newFeedUrl"/></td>
+            <td><input type="button" value="Dodaj" onclick="AddFeed()"/></td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <h3>Ustawienia pogody</h3>
+    @Html.ValidationMessage("WeatherError")
+    <table>
+        <tr>
+            <th></th>
+            <th>Miasto</th>
+            <th>Ilość</th>
+            <th></th>
+        </tr>
+        @foreach (var weather in Model.Weather)
+        {
+            <tr>
+                <td>@weather.ID</td>
+                <td>@weather.City</td>
+                <td>@weather.Quantity</td>
+                <td><input type="button" value="Usuń" onclick="RemoveCity('@weather.ID')" /></td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td><input type="text" id="newCity" /></td>
+            <td><input type="number" id="newQuantity" /></td>
+            <td><input type="button" value="Dodaj" onclick="AddCity()" /></td>
+        </tr>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function RemoveFeed(feedId) {
+            window.location.href = '@Url.Action("RemoveFeed", "RSS")' + "?feedId=" + feedId;
+        }
+        
+        function AddFeed() {
+            var url = $('#newFeedUrl').val();
+
+            $.post('@Url.Action("AddFeed", "RSS")' + "?feedUrl=" + url, function() {
+                location.reload();
+            });
+        }
+        
+        function RemoveCity(weatherId) {
+            window.location.href = '@Url.Action("RemoveCity", "Weather")' + "?cityId=" + weatherId;
+        }
+
+        function AddCity() {
+            var city = $('#newCity').val();
+            var quantity = $('#newQuantity').val();
+
+            $.post('@Url.Action("AddCity", "Weather")' + "?city=" + encodeURI(city) + "&quantity=" + quantity, function () {
+                location.reload();
+            });
+        }
+    </script>
+
+}

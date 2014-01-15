@@ -1,0 +1,71 @@
+﻿@model List<Mashup.Logic.Providers.Weather.LocalWeather>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Model == null)
+{
+    return;
+}
+
+@foreach (var localWeather in Model)
+{
+    <div>
+        @{
+            var city = localWeather.data.request.FirstOrDefault();
+
+            if (city != null)
+            {
+                <h1>@city.query</h1>
+
+                <div>
+                    @{
+                        var d = localWeather.data.current_Condition.FirstOrDefault();
+                        <br />
+                        @Html.Label("TERAZ")
+                        <br />
+                        var icond = d.weatherIconUrl.FirstOrDefault();
+                        if (icond != null)
+                        {
+                            <img src="@icond.value" />
+                        }
+                        <br />
+                        @Html.Label("Temperatura: " + d.temp_C)
+                        @Html.Raw("&deg;C")
+                        <br />
+                        @Html.Label("Prędkość wiatru: " + d.windspeedKmph.ToString() + "km/h")
+                        <br />
+                        @Html.Label("Ciśnienie: " + d.pressure + "hPa")
+                        <br />
+                        @Html.Label("Wilgotność: " + d.humidity + "%")
+                        <br />
+                        @Html.Label("Zachmurzenie: " + d.cloudcover + "%")
+                    }
+                </div>
+
+                <div>
+                    @foreach (var w in localWeather.data.weather)
+                    {
+                        <br/>
+                        @Html.Label(w.date.ToShortDateString())
+                        <br/>
+                        var icon = w.weatherIconUrl.FirstOrDefault();
+                        if (icon != null)
+                        {
+                            <img src="@icon.value"/>
+                        }
+                        <br/>
+                        @Html.Label("Minimalna temperatura: " + w.tempMinC)
+                        @Html.Raw("&deg;C")
+                        <br/>
+                        @Html.Label("Maksymalna temperatura: " + w.tempMaxC)
+                        @Html.Raw("&deg;C")
+                        <br/>
+                        @Html.Label("Prędkość wiatru: " + w.windspeedKmph.ToString() + "km/h")
+                    }
+                </div>
+            }
+        }
+    </div>
+}

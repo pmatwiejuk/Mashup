@@ -1,0 +1,23 @@
+﻿@model List<Mashup.Data.Model.RSSModel>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<ul>
+    @foreach (var rss in Model)
+    {
+        <li>
+            <p><strong>@rss.RSSName</strong></p>
+            <p>@rss.RSSDescription</p>
+            <ul>
+                @foreach (var rssItem in rss.RssItems)
+                {
+                    <li>
+                        <p>@rssItem.PublishDate.ToString()</p><a href="@rssItem.Url">@rssItem.Title</a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ul>

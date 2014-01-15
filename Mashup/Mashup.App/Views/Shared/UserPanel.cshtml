@@ -1,0 +1,9 @@
+﻿@model dynamic
+
+@if (this.User.Identity.IsAuthenticated)
+{
+    <div>
+        @Html.Raw(string.Format("{0} | ", Html.ActionLink(this.User.Identity.Name, "EditProfile", "Home")))
+        @Html.ActionLink("Wyloguj", "LogOut", "Home")
+    </div>
+}

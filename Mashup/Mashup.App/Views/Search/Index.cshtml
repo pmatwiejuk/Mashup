@@ -1,0 +1,18 @@
+﻿@model Mashup.Logic.Providers.Search.SearchResultItem
+
+@{
+    Layout = null;
+}
+
+<div id="searchBlock">
+
+        @Html.TextBox("searchQuery", null, new { type = "search", onkeypress = "searchKeyPress(event);" })
+        <input type="button" id="searchButton" onclick="search()" data-searchurl="@Url.Action("Search", "Search")" value="Szukaj" />
+    
+    
+    <div class="clear"></div>
+</div>
+
+<div hidden="hidden" id="searchResult"></div>
+
+<div class="clear"></div>
