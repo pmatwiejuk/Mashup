@@ -9,5 +9,6 @@
         public string Url { get; set; }
 
         public DateTime PublishDate { get; set; }
+        public string Content { get; set; }
     }
 }

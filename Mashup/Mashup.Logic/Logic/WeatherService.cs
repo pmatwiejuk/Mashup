@@ -12,7 +12,7 @@ namespace Mashup.Logic.Logic
 
     public class WeatherService : IWeatherService
     {
-        private WeatherProvider provider;
+        private readonly WeatherProvider provider;
 
         public WeatherService()
         {
@@ -32,7 +32,7 @@ namespace Mashup.Logic.Logic
                         return new List<LocalWeather>();
                     }
 
-                    var weathers = context.Table<Mashup.Data.Model.Weather>().NewQuery().Where(x => x.ID_user == user.ID).ToList();
+                    var weathers = context.Table<Data.Model.Weather>().NewQuery().Where(x => x.ID_user == user.ID).ToList();
 
                     return weathers.Select(x => provider.LocalWeather(x.City, x.Quantity)).ToList();
                 }
@@ -65,7 +65,6 @@ namespace Mashup.Logic.Logic
             catch (Exception)
             {
                 //ojojojo
-                throw;
             }
 
             return false;
@@ -92,10 +91,10 @@ namespace Mashup.Logic.Logic
                 using (var context = new DataContext())
                 {
                     var weatherElement =
-                        context.Table<Mashup.Data.Model.Weather>().NewQuery().FirstOrDefault(x => x.ID_user == userId && x.ID == cityId);
+                        context.Table<Data.Model.Weather>().NewQuery().FirstOrDefault(x => x.ID_user == userId && x.ID == cityId);
                     if (weatherElement != null)
                     {
-                        context.Table<Mashup.Data.Model.Weather>().Delete(weatherElement);
+                        context.Table<Data.Model.Weather>().Delete(weatherElement);
                         context.SaveChanges();
 
                         return true;
@@ -105,7 +104,6 @@ namespace Mashup.Logic.Logic
             catch (Exception)
             {
                 //ojojojo
-                throw;
             }
 
             return false;

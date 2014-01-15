@@ -35,7 +35,6 @@
             catch (Exception ex)
             {
                 // ojojojoj
-                throw;
             }
 
             return false;
@@ -54,7 +53,6 @@
             catch (Exception ex)
             {
                 // ojojojoj
-                throw;
             }
 
             return null;
@@ -92,7 +90,6 @@
             catch (Exception ex)
             {
                 // ojojojoj
-                throw;
             }
 
             return false;

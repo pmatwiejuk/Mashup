@@ -4,20 +4,16 @@
     ViewBag.Title = "title";
 }
 
-<ul>
     @foreach (var rss in Model)
     {
-        <li>
-            <p><strong>@rss.RSSName</strong></p>
-            <p>@rss.RSSDescription</p>
-            <ul>
-                @foreach (var rssItem in rss.RssItems)
-                {
-                    <li>
-                        <p>@rssItem.PublishDate.ToString()</p><a href="@rssItem.Url">@rssItem.Title</a>
-                    </li>
-                }
-            </ul>
-        </li>
+        <h2>@rss.RSSName</h2>
+        <h3>@rss.RSSDescription</h3>
+        foreach (var rssItem in rss.RssItems)
+        {
+            <p>
+                <time>@rssItem.PublishDate.ToString("dd MMMM yyyy HH:mm")</time>
+                <a href="@rssItem.Url">@rssItem.Title</a>
+                <span>@rssItem.Content</span>
+            </p>
+        }
     }
-</ul>

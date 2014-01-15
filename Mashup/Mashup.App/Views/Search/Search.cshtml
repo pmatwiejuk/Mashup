@@ -2,9 +2,9 @@
 
 @foreach (var searchResult in Model)
 {
-    <div>
-        <strong><a href="@searchResult.Url">@searchResult.Title</a></strong>
-        <p>@searchResult.Description</p>
+    <div class="resultItem">
+        <a href="@searchResult.Url"><b>@searchResult.Title</b></a><br />
+        <span>@searchResult.Description</span><br />
         <a href="@searchResult.Url">@searchResult.DisplayUrl</a>
     </div>
 }

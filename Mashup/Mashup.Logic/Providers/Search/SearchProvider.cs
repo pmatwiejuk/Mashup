@@ -42,6 +42,8 @@
             var wc = new WebClient { Credentials = new NetworkCredential(this.apiKey, this.apiKey) };
             var result = wc.DownloadString(new Uri(searchUrl.ToString()));
 
+            result = Encoding.UTF8.GetString(Encoding.Default.GetBytes(result));
+
             var res = JsonConvert.DeserializeObject<TResult>(result);
             return res;
         }

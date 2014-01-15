@@ -11,61 +11,56 @@
 
 @foreach (var localWeather in Model)
 {
-    <div>
-        @{
-            var city = localWeather.data.request.FirstOrDefault();
+    var city = localWeather.data.request.FirstOrDefault();
 
-            if (city != null)
-            {
-                <h1>@city.query</h1>
+    if (city != null)
+    {
+        var d = localWeather.data.current_Condition.FirstOrDefault();
+        <h4>@city.query</h4>
 
-                <div>
-                    @{
-                        var d = localWeather.data.current_Condition.FirstOrDefault();
-                        <br />
-                        @Html.Label("TERAZ")
-                        <br />
-                        var icond = d.weatherIconUrl.FirstOrDefault();
-                        if (icond != null)
-                        {
-                            <img src="@icond.value" />
-                        }
-                        <br />
-                        @Html.Label("Temperatura: " + d.temp_C)
-                        @Html.Raw("&deg;C")
-                        <br />
-                        @Html.Label("Prędkość wiatru: " + d.windspeedKmph.ToString() + "km/h")
-                        <br />
-                        @Html.Label("Ciśnienie: " + d.pressure + "hPa")
-                        <br />
-                        @Html.Label("Wilgotność: " + d.humidity + "%")
-                        <br />
-                        @Html.Label("Zachmurzenie: " + d.cloudcover + "%")
-                    }
-                </div>
+        <div class="weather actual">
+            @{
+        var icond = d.weatherIconUrl.FirstOrDefault();
+        if (icond != null)
+        {
+            <img alt="weather-icon" src="@icond.value" />
+        }
 
-                <div>
-                    @foreach (var w in localWeather.data.weather)
-                    {
-                        <br/>
-                        @Html.Label(w.date.ToShortDateString())
-                        <br/>
-                        var icon = w.weatherIconUrl.FirstOrDefault();
-                        if (icon != null)
-                        {
-                            <img src="@icon.value"/>
-                        }
-                        <br/>
-                        @Html.Label("Minimalna temperatura: " + w.tempMinC)
-                        @Html.Raw("&deg;C")
-                        <br/>
-                        @Html.Label("Maksymalna temperatura: " + w.tempMaxC)
-                        @Html.Raw("&deg;C")
-                        <br/>
-                        @Html.Label("Prędkość wiatru: " + w.windspeedKmph.ToString() + "km/h")
-                    }
+        <b>aktualnie</b><br />
+
+                <span class="big">@d.temp_C&deg;C</span>
+                <br /><br />
+
+                <div class="details">
+                    Prędkość wiatru: <b>@d.windspeedKmph km/h</b><br />
+                    Ciśnienie: <b>@d.pressure hPa</b><br />
+                    Wilgotność: <b>@d.humidity%</b><br />
+                    Zachmurzenie: <b>@d.cloudcover%</b>
                 </div>
             }
+        </div>
+
+        foreach (var w in localWeather.data.weather)
+        {
+            <div class="weather">
+                @{
+            var icon = w.weatherIconUrl.FirstOrDefault();
+            if (icon != null)
+            {
+                <img alt="weather-icon" src="@icon.value" />
+            }
+                }
+
+                <b>@w.date.ToString("dd MMMM yyyy")</b><br />
+
+                <span class="big">@w.tempMaxC&deg;C/</span>
+                <span class="small">@w.tempMinC&deg;C</span>
+                <br /><br />
+
+                <div class="details">
+                    Prędkość wiatru: <b>@w.windspeedKmph km/h</b>
+                </div>
+            </div>
         }
-    </div>
+    }
 }

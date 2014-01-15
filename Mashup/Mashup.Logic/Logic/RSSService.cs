@@ -30,6 +30,7 @@
         /// Metoda pobierająca wszystkie feedy
         /// </summary>
         /// <param name="userName">Nazwa zalogowanego uzytkownika</param>
+        /// <param name="numberPerFeed">ilość per feed</param>
         /// <returns></returns>
         public List<RSSModel> GetAllRssFeeds(string userName, int? numberPerFeed = null)
         {
@@ -71,7 +72,8 @@
                                 var rssItemSubResult = new RSSItemModel
                                                            {
                                                                Title = item.Title.Text,
-                                                               PublishDate = item.PublishDate.DateTime
+                                                               PublishDate = item.PublishDate.DateTime,
+                                                               Content = item.Summary.Text
                                                            };
 
                                 var uri = item.Links.Select(x => x.Uri).FirstOrDefault();
@@ -93,7 +95,6 @@
             catch (Exception)
             {
                 // ojojojoj
-                throw;
             }
 
             return null;
@@ -126,7 +127,6 @@
             catch (Exception)
             {
                 //ojojojo
-                throw;
             }
 
             return false;
@@ -158,7 +158,6 @@
             catch (Exception)
             {
                 //ojojojo
-                throw;
             }
 
             return false;
